@@ -1,7 +1,7 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
-Version:	2.0.9
+Version:	2.1.1
 Release:	1
 License:	GPL
 Group:		Applications/System
