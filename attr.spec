@@ -16,8 +16,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_bindir		/bin
 
 %description
-An experimental attr command to manipulate extended attributes
-under Linux.
+An experimental attr command to manipulate extended attributes under
+Linux.
 
 %description -l pl
 Eksperymentalne wersja polecenia attr to zarz±dzania rozszerzonymi
@@ -27,6 +27,7 @@ atrybutami pod systemem Linux.
 Summary:	Header files and libraries to use extended attributes
 Summary(pl):	Pliki nag³ówkowe i biblioteki
 Group:		Development/Libraries
+Requires:	%{name} = %{version}
 
 %description devel
 Header files and libraries to develop software which manipulate
@@ -35,6 +36,18 @@ extended attributes.
 %description devel -l pl
 Pliki nag³ówkowe i biblioteki potrzebne do rozwoju oprogramowania
 manipuluj±cego rozszerzonymi atrybutami.
+
+%package static
+Summary:	Static libraries for extended attributes
+Summary(pl):	Biblioteki statyczne attr
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static libraries for extended attributes.
+
+%description static -l pl
+Biblioteki statyczne attr.
 
 %prep
 %setup  -q
@@ -54,6 +67,7 @@ DIST_ROOT="$RPM_BUILD_ROOT"
 DIST_INSTALL=`pwd`/install.manifest
 DIST_INSTALL_DEV=`pwd`/install-dev.manifest
 export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV
+
 %{__make} install DIST_MANIFEST="$DIST_INSTALL"
 %{__make} install-dev DIST_MANIFEST="$DIST_INSTALL_DEV"
 
@@ -74,7 +88,7 @@ gzip -9nf doc/CHANGES
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
+%post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
@@ -88,6 +102,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.a
 %{_includedir}/attr
 %{_mandir}/man[23]/*
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
