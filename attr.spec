@@ -11,6 +11,7 @@ Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{versio
 Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	xfsprogs-devel >= 2.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -53,13 +54,16 @@ Static libraries for extended attributes.
 Biblioteki statyczne attr.
 
 %prep
-%setup  -q
+%setup -q
 %patch0 -p1
 
 %build
-DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}"; export DEBUG
+rm -f aclocal.m4
+%{__aclocal} -I m4
 %{__autoconf}
-%configure
+%configure \
+	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
+	OPTIMIZER="%{rpmcflags}"
 
 %{__make}
 
@@ -83,7 +87,7 @@ rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
 rm -rf	$RPM_BUILD_ROOT%{_mandir}/man2
 
-ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT/lib ; echo libattr.so.*.*.*) \
+ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT%{_libdir} ; echo libattr.so.*.*.*) \
 	 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
 
 echo ".so attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3

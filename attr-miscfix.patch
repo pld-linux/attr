@@ -1,11 +1,28 @@
-diff -urN aaa/attr-2.4.7/configure.in attr-2.4.7/configure.in
---- aaa/attr-2.4.7/configure.in	2003-06-25 03:51:28.000000000 +0200
-+++ attr-2.4.7/configure.in	2003-08-06 01:17:02.000000000 +0200
-@@ -14,7 +14,6 @@
- 
- AC_PACKAGE_GLOBALS(attr)
- AC_PACKAGE_UTILITIES(attr)
--AC_MANUAL_FORMAT
- 
- AC_C_CONST
- AC_TYPE_MODE_T
+--- attr-2.4.7/m4/manual_format.m4.orig	2003-06-25 03:51:29.000000000 +0200
++++ attr-2.4.7/m4/manual_format.m4	2003-08-08 21:08:12.000000000 +0200
+@@ -6,12 +6,5 @@
+ # 
+ AC_DEFUN([AC_MANUAL_FORMAT],
+   [ have_zipped_manpages=false
+-    for d in ${prefix}/share/man ${prefix}/man ; do
+-        if test -f $d/man1/man.1.gz
+-        then
+-            have_zipped_manpages=true
+-            break
+-        fi
+-    done
+     AC_SUBST(have_zipped_manpages)
+   ])
+--- attr-2.4.7/m4/package_utilies.m4.orig	2003-06-25 03:51:29.000000000 +0200
++++ attr-2.4.7/m4/package_utilies.m4	2003-08-08 21:08:29.000000000 +0200
+@@ -17,9 +17,7 @@
+ #  MSGFMT MSGMERGE RPM
+ #
+ AC_DEFUN([AC_PACKAGE_UTILITIES],
+-  [ if test -z "$CC"; then
+-        AC_PROG_CC
+-    fi
++  [ AC_PROG_CC
+     cc="$CC"
+     AC_SUBST(cc)
+     AC_PACKAGE_NEED_UTILITY($1, "$cc", cc, [C compiler])
