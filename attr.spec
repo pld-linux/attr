@@ -80,3 +80,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
 %{_includedir}/attr
+%{_mandir}/man[23]/*
