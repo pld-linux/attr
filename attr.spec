@@ -30,8 +30,12 @@ Summary:	Header files and libraries to use extended attributes
 Summary(pl):	Pliki nagЁСwkowe i biblioteki
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 
 %description devel
 Header files and libraries to develop software which manipulate
