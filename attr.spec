@@ -8,8 +8,8 @@ License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
 # Source0-md5:	b785ec1b5b351b6ffcf0c31b12d87692
-Source1:	%{name}-pl.po
 Patch0:		%{name}-miscfix.patch
+Patch1:		%{name}-po.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -33,7 +33,7 @@ atrybutami pod systemem Linux.
 Summary:	Header files and libraries to use extended attributes
 Summary(pl):	Pliki nag³ówkowe i biblioteki do korzystania z rozszerzonych atrybutów
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files to develop software which manipulate extended attributes.
@@ -46,7 +46,7 @@ rozszerzonymi atrybutami.
 Summary:	Static libraries for extended attributes
 Summary(pl):	Biblioteki statyczne do korzystania z rozszerzonych atrybutów
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libraries for extended attributes.
@@ -57,9 +57,7 @@ Biblioteki statyczne do korzystania z rozszerzonych atrybutów.
 %prep
 %setup -q
 %patch0 -p1
-chmod -Rf u+w .
-cp %{SOURCE1} po/pl.po
-%{__perl} -pi -e 's/^(LINGUAS.*)/$1 pl/' po/Makefile
+%patch1 -p1
 
 %build
 rm -f aclocal.m4
