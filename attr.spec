@@ -1,16 +1,21 @@
-Summary:	Utility for managing filesystem extended attributes.
-Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs.
+Summary:	Utility for managing filesystem extended attributes
+Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
 Version:	1.0.1
 Release:	1
 License:	GPL
 Group:		Applications/System
+Group(de):	Applikationen/System
+Group(pl):	Aplikacje/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
 Patch0:		%{name}-miscfix.patch
+URL:		http://oss.sgi.com/projects/xfs/
+BuildRequires:	autoconf
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	xfsprogs-devel
-URL:		http://oss.sgi.com/projects/xfs/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_bindir		/bin
 
 %description
 An *experimental* command (attr) to manipulate extended attributes
@@ -21,16 +26,16 @@ under Linux.
 atrybutami pod systemem Linux.
 
 %package devel
-Summary:        Header files and libraries to use extended attributes
-Summary(pl):    Pliki nag³ówkowe i biblioteki
-Group:          Development/Libraries
-Group(de):      Entwicklung/Libraries
-Group(fr):      Development/Librairies
-Group(pl):      Programowanie/Biblioteki
+Summary:	Header files and libraries to use extended attributes
+Summary(pl):	Pliki nag³ówkowe i biblioteki
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
 
 %description devel
-Header files and libraries to develop software which manipulate extended
-attributes.
+Header files and libraries to develop software which manipulate
+extended attributes.
 
 %description -l pl devel
 Pliki nag³ówkowe i biblioteki potrzebne do rozwoju oprogramowania
@@ -59,6 +64,7 @@ export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV
 
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
+
 echo ".so man3/attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3
 echo ".so man3/attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
 echo ".so man3/attr_multi.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_multif.3
@@ -73,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/*.gz
-%attr(755,root,root) /bin/*
+%attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[18]/*
 
 %files devel
