@@ -2,7 +2,7 @@ Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
 Version:	2.2.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
@@ -76,7 +76,7 @@ export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
 
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
-rm -f	$RPM_BUILD_ROOT%{_mandir}/man2/{f*,lgetxattr,llistxattr,lremovexattr,lsetxattr}.2
+rm -rf	$RPM_BUILD_ROOT%{_mandir}/man2
 
 ln -sf %{_libdir}/libattr.so.1.0.1 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
 
@@ -85,15 +85,6 @@ echo ".so attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
 echo ".so attr_multi.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_multif.3
 echo ".so attr_remove.3" > $RPM_BUILD_ROOT%{_mandir}/man3/attr_removef.3
 echo ".so attr_set.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_setf.3
-
-echo ".so getxattr.2"	> $RPM_BUILD_ROOT%{_mandir}/man2/fgetxattr.2
-echo ".so listxattr.2"	> $RPM_BUILD_ROOT%{_mandir}/man2/flistxattr.2
-echo ".so removexattr.2" > $RPM_BUILD_ROOT%{_mandir}/man2/fremovexattr.2
-echo ".so setxattr.2"	> $RPM_BUILD_ROOT%{_mandir}/man2/fsetxattr.2
-echo ".so getxattr.2"	> $RPM_BUILD_ROOT%{_mandir}/man2/lgetxattr.2
-echo ".so listxattr.2"	> $RPM_BUILD_ROOT%{_mandir}/man2/llistxattr.2
-echo ".so removexattr.2" > $RPM_BUILD_ROOT%{_mandir}/man2/lremovexattr.2
-echo ".so setxattr.2"	> $RPM_BUILD_ROOT%{_mandir}/man2/lsetxattr.2
 
 %find_lang %{name}
 
@@ -115,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libexecdir}/lib*.la
 %attr(755,root,root) %{_libexecdir}/lib*.so
 %{_includedir}/attr
-%{_mandir}/man[235]/*
+%{_mandir}/man[35]/*
 
 %files static
 %defattr(644,root,root,755)
