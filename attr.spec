@@ -1,7 +1,7 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
-Version:	2.0.7
+Version:	2.0.8
 Release:	1
 License:	GPL
 Group:		Applications/System
@@ -85,8 +85,6 @@ echo ".so attr_multi.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_multif.3
 echo ".so attr_remove.3" > $RPM_BUILD_ROOT%{_mandir}/man3/attr_removef.3
 echo ".so attr_set.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_setf.3
 
-gzip -9nf doc/CHANGES
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -95,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/*.gz
+%doc doc/CHANGES
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) /lib/lib*.so.*.*
 %{_mandir}/man[18]/*
