@@ -78,6 +78,8 @@ rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man2/{f*,lgetxattr,llistxattr,lremovexattr,lsetxattr}.2
 
+ln -sf %{_libdir}/libattr.so.1.0.1 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
+
 echo ".so attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3
 echo ".so attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
 echo ".so attr_multi.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_multif.3
