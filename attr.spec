@@ -12,7 +12,6 @@ Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	e2fsprogs-devel
 BuildRequires:	xfsprogs-devel >= 2.5.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
