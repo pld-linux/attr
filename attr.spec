@@ -16,11 +16,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_bindir		/bin
 
 %description
-An *experimental* command (attr) to manipulate extended attributes
+An experimental attr command to manipulate extended attributes
 under Linux.
 
 %description -l pl
-*Eksperymentalna* komenda (attr) to zarz±dzania rozszerzonymi
+Eksperymentalne wersja polecenia attr to zarz±dzania rozszerzonymi
 atrybutami pod systemem Linux.
 
 %package devel
@@ -32,7 +32,7 @@ Group:		Development/Libraries
 Header files and libraries to develop software which manipulate
 extended attributes.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe i biblioteki potrzebne do rozwoju oprogramowania
 manipuluj±cego rozszerzonymi atrybutami.
 
@@ -43,7 +43,7 @@ manipuluj±cego rozszerzonymi atrybutami.
 %build
 DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}"; export DEBUG
 autoconf
-%configure 
+%configure
 
 %{__make}
 
@@ -53,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 DIST_ROOT="$RPM_BUILD_ROOT"
 DIST_INSTALL=`pwd`/install.manifest
 DIST_INSTALL_DEV=`pwd`/install-dev.manifest
-export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV 
+export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV
 %{__make} install DIST_MANIFEST="$DIST_INSTALL"
 %{__make} install-dev DIST_MANIFEST="$DIST_INSTALL_DEV"
 
