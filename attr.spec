@@ -14,7 +14,8 @@ URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	sed >= 4.1.1-1	
+BuildRequires:	sed >= 4.1.1-1
+Obsoletes:		libattr
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
