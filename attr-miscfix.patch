@@ -5,10 +5,10 @@ diff -urN attr-1.0.1.org/configure.in attr-1.0.1/configure.in
  AC_SUBST(malloc_lib)
  
  dnl Set version
--. VERSION
+-. ./VERSION
 +PKG_MAJOR=1
-+PKG_MINOR=0
-+PKG_REVISION=1
++PKG_MINOR=1
++PKG_REVISION=3
 +PKG_BUILD=0
  
  pkg_version=${PKG_MAJOR}.${PKG_MINOR}.${PKG_REVISION}
@@ -28,3 +28,12 @@ diff -urN attr-1.0.1.org/configure.in attr-1.0.1/configure.in
  AC_SUBST(pkg_man_dir)
  AC_SUBST(have_zipped_manpages)
  
+@@ -134,7 +134,7 @@
+ AC_SUBST(have_zipped_manpages)
+ 
+ dnl binaries
+-pkg_bin_dir=${prefix}/bin
++pkg_bin_dir=/bin
+ AC_SUBST(pkg_bin_dir)
+ 
+ dnl static libraries
