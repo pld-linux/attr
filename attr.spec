@@ -7,7 +7,7 @@ Release:	3
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
-# Source0-md5: 1cd48b80889ffb033f53e63e66014071
+# Source0-md5:	1cd48b80889ffb033f53e63e66014071
 Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
