@@ -12,6 +12,7 @@ Patch0:		%{name}-miscfix.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	xfsprogs-devel 
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
