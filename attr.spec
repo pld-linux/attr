@@ -2,7 +2,7 @@ Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami systemu plików
 Name:		attr
 Version:	2.4.16
-Release:	2
+Release:	3
 # most part is on LGPL v2.1, but the rest enforces GPL
 License:	GPL
 Group:		Applications/System
@@ -14,6 +14,7 @@ URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	sed >= 4.1.1-1	
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
@@ -90,6 +91,9 @@ rm -rf	$RPM_BUILD_ROOT%{_mandir}/man2
 
 ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT%{_libdir} ; echo libattr.so.*.*.*) \
 	 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
+
+%{__sed} -i "s|libdir='%{_libdir}'|libdir='%{_libexecdir}'|" \
+	$RPM_BUILD_ROOT%{_libexecdir}/libattr.la
 
 echo ".so attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3
 echo ".so attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
