@@ -66,15 +66,18 @@ DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}"; export DEBUG
 %install
 rm -rf $RPM_BUILD_ROOT
 
-DIST_ROOT="$RPM_BUILD_ROOT"
+DIST_ROOT=$RPM_BUILD_ROOT
 DIST_INSTALL=`pwd`/install.manifest
 DIST_INSTALL_DEV=`pwd`/install-dev.manifest
 DIST_INSTALL_LIB=`pwd`/install-lib.manifest
 export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
 
-%{__make} install DIST_MANIFEST="$DIST_INSTALL"
-%{__make} install-dev DIST_MANIFEST="$DIST_INSTALL_DEV"
-%{__make} install-lib DIST_MANIFEST="$DIST_INSTALL_LIB"
+%{__make} install \
+	DIST_MANIFEST=$DIST_INSTALL
+%{__make} install-dev \
+	DIST_MANIFEST=$DIST_INSTALL_DEV
+%{__make} install-lib \
+	DIST_MANIFEST=$DIST_INSTALL_LIB
 
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
