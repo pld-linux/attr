@@ -2,7 +2,7 @@ Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
 Version:	2.0.5
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
@@ -79,11 +79,11 @@ rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
 rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.so
 ln -sf /lib/libattr.so.1.0.0 $RPM_BUILD_ROOT%{_libdir}/libattr.so
 
-echo ".so man3/attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3
-echo ".so man3/attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
-echo ".so man3/attr_multi.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_multif.3
-echo ".so man3/attr_remove.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_removef.3
-echo ".so man3/attr_set.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_setf.3
+echo ".so attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3
+echo ".so attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
+echo ".so attr_multi.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_multif.3
+echo ".so attr_remove.3" > $RPM_BUILD_ROOT%{_mandir}/man3/attr_removef.3
+echo ".so attr_set.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_setf.3
 
 gzip -9nf doc/CHANGES
 
