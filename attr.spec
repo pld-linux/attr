@@ -3,6 +3,7 @@ Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
 Version:	2.4.1
 Release:	2
+# most part is on LGPL v2.1, but the rest enforces GPL
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
@@ -78,7 +79,8 @@ rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
 rm -rf	$RPM_BUILD_ROOT%{_mandir}/man2
 
-ln -sf %{_libdir}/libattr.so.1.1.0 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
+ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT/lib ; echo libattr.so.*.*.*) \
+	 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
 
 echo ".so attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3
 echo ".so attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
@@ -96,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc/CHANGES
+%doc README doc/CHANGES
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man[18]/*
