@@ -2,7 +2,7 @@ Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
 Version:	2.4.1
-Release:	2
+Release:	3
 # most part is on LGPL v2.1, but the rest enforces GPL
 License:	GPL
 Group:		Applications/System
@@ -101,14 +101,14 @@ rm -rf $RPM_BUILD_ROOT
 %doc README doc/CHANGES
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_mandir}/man[18]/*
+%{_mandir}/man[158]/*
 
 %files devel
 %defattr(644,root,root,755)
 %{_libexecdir}/lib*.la
 %attr(755,root,root) %{_libexecdir}/lib*.so
 %{_includedir}/attr
-%{_mandir}/man[35]/*
+%{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
