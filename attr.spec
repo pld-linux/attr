@@ -110,7 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libexecdir}/lib*.la
+%{_libexecdir}/lib*.la
 %attr(755,root,root) %{_libexecdir}/lib*.so
 %{_includedir}/attr
 %{_mandir}/man[235]/*
