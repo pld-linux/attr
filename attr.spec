@@ -2,7 +2,7 @@ Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
 Version:	2.0.8
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
@@ -20,7 +20,7 @@ An experimental attr command to manipulate extended attributes under
 Linux.
 
 %description -l pl
-Eksperymentalne wersja polecenia attr to zarz±dzania rozszerzonymi
+Eksperymentalna wersja polecenia attr to zarz±dzania rozszerzonymi
 atrybutami pod systemem Linux.
 
 %package devel
@@ -30,12 +30,11 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
 %description devel
-Header files and libraries to develop software which manipulate
-extended attributes.
+Header files to develop software which manipulate extended attributes.
 
 %description devel -l pl
-Pliki nag³ówkowe i biblioteki potrzebne do rozwoju oprogramowania
-manipuluj±cego rozszerzonymi atrybutami.
+Pliki nag³ówkowe potrzebne do tworzenia oprogramowania manipuluj±cego
+rozszerzonymi atrybutami.
 
 %package static
 Summary:	Static libraries for extended attributes
@@ -103,7 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/attr
-%{_mandir}/man[23]/*
+%{_mandir}/man[235]/*
 
 %files static
 %defattr(644,root,root,755)
