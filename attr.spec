@@ -1,7 +1,7 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
-Version:	2.1.1
+Version:	2.2.0
 Release:	1
 License:	GPL
 Group:		Applications/System
@@ -95,13 +95,15 @@ echo ".so listxattr.2"	> $RPM_BUILD_ROOT%{_mandir}/man2/llistxattr.2
 echo ".so removexattr.2" > $RPM_BUILD_ROOT%{_mandir}/man2/lremovexattr.2
 echo ".so setxattr.2"	> $RPM_BUILD_ROOT%{_mandir}/man2/lsetxattr.2
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc doc/CHANGES
 %attr(755,root,root) %{_bindir}/*
