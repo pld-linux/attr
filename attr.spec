@@ -17,8 +17,8 @@ BuildRequires:	xfsprogs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
-%define		_libdir		/lib
-%define		_libexecdir	/usr/lib
+%define		_libdir		/%{_lib}
+%define		_libexecdir	/usr/%{_lib}
 
 %description
 An experimental attr command to manipulate extended attributes under
