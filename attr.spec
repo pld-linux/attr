@@ -55,7 +55,7 @@ Biblioteki statyczne attr.
 
 %build
 DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}"; export DEBUG
-autoconf
+%{__autoconf}
 %configure
 
 %{__make}
