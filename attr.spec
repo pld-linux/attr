@@ -2,7 +2,7 @@ Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami fs
 Name:		attr
 Version:	2.4.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
@@ -78,7 +78,7 @@ rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
 rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
 rm -rf	$RPM_BUILD_ROOT%{_mandir}/man2
 
-ln -sf %{_libdir}/libattr.so.1.0.1 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
+ln -sf %{_libdir}/libattr.so.1.1.0 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
 
 echo ".so attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3
 echo ".so attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
