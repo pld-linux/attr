@@ -13,12 +13,9 @@ diff -urN attr-1.0.1.org/configure.in attr-1.0.1/configure.in
  
  pkg_version=${PKG_MAJOR}.${PKG_MINOR}.${PKG_REVISION}
  pkg_release=$PKG_BUILD
-@@ -108,16 +111,8 @@
- dnl man pages (source)
- dnl also check if man page source is gzipped
+@@ -108,14 +111,6 @@
  dnl (usually on Debian, but not Redhat pre-7.0)
--pkg_man_dir=${prefix}/man
-+pkg_man_dir=${prefix}/share/man
+ pkg_man_dir=${prefix}/share/man
  have_zipped_manpages=false
 -for d in ${prefix}/share/man ${prefix}/man ; do
 -    if test -f $d/man1/man.1.gz
