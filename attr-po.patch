@@ -1,34 +1,141 @@
---- attr-2.4.15/po/pl.po.orig	2004-03-26 15:17:48.000000000 +0100
-+++ attr-2.4.15/po/pl.po	2004-03-27 22:35:32.182018960 +0100
-@@ -5,9 +5,9 @@
+--- attr-2.4.20/po/pl.po.orig	2004-10-15 17:05:18.000000000 +0200
++++ attr-2.4.20/po/pl.po	2005-04-16 01:31:14.311162152 +0200
+@@ -1,13 +1,13 @@
+ # Polish translation for attr.
+ # Copyright (C) 2004 Free Software Foundation, Inc.
+ # This file is distributed under the same license as the attr package.
+-# Jakub Bogusz <qboosh@pld-linux.org>, 2004.
++# Jakub Bogusz <qboosh@pld-linux.org>, 2004-2005.
  #
  msgid ""
  msgstr ""
 -"Project-Id-Version: attr-2.4.14\n"
-+"Project-Id-Version: attr-2.4.15\n"
++"Project-Id-Version: attr-2.4.20\n"
  "POT-Creation-Date: 2004-01-28 21:04+0100\n"
 -"PO-Revision-Date: 2004-01-28 21:09+0100\n"
-+"PO-Revision-Date: 2004-03-27 22:32+0100\n"
++"PO-Revision-Date: 2005-04-16 01:30+0200\n"
  "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
  "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
-@@ -149,7 +149,7 @@
+@@ -78,26 +78,26 @@
+ msgid "At least one of -s, -g, or -r is required\n"
+ msgstr "Wymagane jest jedno z -s, -g lub -r\n"
  
- #: ../setfattr/setfattr.c:126
+-#: ../getfattr/getfattr.c:97 ../setfattr/setfattr.c:69
++#: ../getfattr/getfattr.c:98 ../setfattr/setfattr.c:71
+ msgid "No such attribute"
+ msgstr "Nie ma takiego atrybutu"
+ 
+-#: ../getfattr/getfattr.c:253
++#: ../getfattr/getfattr.c:254
+ #, c-format
+ msgid "%s: Removing leading '/' from absolute path names\n"
+ msgstr "%s: Usuniêcie wiod±cego '/' ze ¶cie¿ek bezwzglêdnych\n"
+ 
+-#: ../getfattr/getfattr.c:391
++#: ../getfattr/getfattr.c:392
+ #, c-format
+ msgid "%s %s -- get extended attributes\n"
+ msgstr "%s %s -- odczyt rozszerzonych atrybutów\n"
+ 
+-#: ../getfattr/getfattr.c:393 ../setfattr/setfattr.c:167
++#: ../getfattr/getfattr.c:394 ../setfattr/setfattr.c:169
+ #, c-format
+ msgid "Usage: %s %s\n"
+ msgstr "Sk³adnia: %s %s\n"
+ 
+-#: ../getfattr/getfattr.c:396
++#: ../getfattr/getfattr.c:397
+ #, c-format
+ msgid ""
+ "  -n, --name=name         get the named extended attribute value\n"
+@@ -128,12 +128,12 @@
+ "      --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
+ "      --help              ten tekst pomocy\n"
+ 
+-#: ../getfattr/getfattr.c:493
++#: ../getfattr/getfattr.c:494
+ #, c-format
+ msgid "%s: invalid regular expression \"%s\"\n"
+ msgstr "%s: b³êdne wyra¿enie regularne \"%s\"\n"
+ 
+-#: ../getfattr/getfattr.c:511 ../setfattr/setfattr.c:259
++#: ../getfattr/getfattr.c:512
+ #, c-format
+ msgid ""
+ "Usage: %s %s\n"
+@@ -142,22 +142,27 @@
+ "Sk³adnia: %s %s\n"
+ "`%s --help' wy¶wietli wiêcej informacji.\n"
+ 
+-#: ../setfattr/setfattr.c:122
++#: ../setfattr/setfattr.c:124
+ #, c-format
+ msgid "%s: %s: No filename found in line %d, aborting\n"
+ msgstr "%s: %s: Nie znaleziono nazwy pliku w linii %d, przerwanie pracy\n"
+ 
+-#: ../setfattr/setfattr.c:126
++#: ../setfattr/setfattr.c:128
  #, c-format
 -msgid "%s: No filename found inline %d of standard input, aborting\n"
 +msgid "%s: No filename found in line %d of standard input, aborting\n"
  msgstr "%s: Nie znaleziono nazwy pliku w linii %d standardowego wej¶cia, przerwanie pracy\n"
  
- #: ../setfattr/setfattr.c:166
---- attr-2.4.15/po/de.po.orig	2004-03-26 15:17:48.000000000 +0100
-+++ attr-2.4.15/po/de.po	2004-03-27 22:34:54.673721088 +0100
-@@ -139,7 +139,7 @@
- 
- #: ../setfattr/setfattr.c:113
+-#: ../setfattr/setfattr.c:166
++#: ../setfattr/setfattr.c:168
  #, c-format
--msgid "%s: No filename found inline %d of standard input, aborting\n"
-+msgid "%s: No filename found in line %d of standard input, aborting\n"
- msgstr "%s: Kein Dateiname in Zeile %d der Standardeingabe gefunden, Abbruch\n"
+ msgid "%s %s -- set extended attributes\n"
+ msgstr "%s %s -- ustawianie rozszerzonych atrybutów\n"
  
- #: ../setfattr/setfattr.c:154
+-#: ../setfattr/setfattr.c:169
++#: ../setfattr/setfattr.c:170
++#, c-format
++msgid "       %s %s\n"
++msgstr "       %s %s\n"
++
++#: ../setfattr/setfattr.c:172
+ #, c-format
+ msgid ""
+ "  -n, --name=name         set the value of the named extended attribute\n"
+@@ -176,24 +181,35 @@
+ "      --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
+ "      --help              ten tekst pomocy\n"
+ 
+-#: ../libattr/attr_copy_fd.c:80 ../libattr/attr_copy_fd.c:95
+-#: ../libattr/attr_copy_file.c:78 ../libattr/attr_copy_file.c:93
++#: ../setfattr/setfattr.c:262
++#, c-format
++msgid ""
++"Usage: %s %s\n"
++"       %s %s\n"
++"Try `%s --help' for more information.\n"
++msgstr ""
++"Sk³adnia: %s %s\n"
++"          %s %s\n"
++"`%s --help' wy¶wietli wiêcej informacji.\n"
++
++#: ../libattr/attr_copy_fd.c:81 ../libattr/attr_copy_fd.c:96
++#: ../libattr/attr_copy_file.c:79 ../libattr/attr_copy_file.c:94
+ #, c-format
+ msgid "listing attributes of %s"
+ msgstr "wypisywanie atrybutów %s"
+ 
+-#: ../libattr/attr_copy_fd.c:116 ../libattr/attr_copy_fd.c:133
+-#: ../libattr/attr_copy_file.c:114 ../libattr/attr_copy_file.c:131
++#: ../libattr/attr_copy_fd.c:117 ../libattr/attr_copy_fd.c:134
++#: ../libattr/attr_copy_file.c:115 ../libattr/attr_copy_file.c:132
+ #, c-format
+ msgid "getting attribute %s of %s"
+ msgstr "odczyt atrybutu %s dla %s"
+ 
+-#: ../libattr/attr_copy_fd.c:143 ../libattr/attr_copy_file.c:141
++#: ../libattr/attr_copy_fd.c:144 ../libattr/attr_copy_file.c:142
+ #, c-format
+ msgid "setting attributes for %s"
+ msgstr "ustawianie atrybutów dla %s"
+ 
+-#: ../libattr/attr_copy_fd.c:149 ../libattr/attr_copy_file.c:147
++#: ../libattr/attr_copy_fd.c:150 ../libattr/attr_copy_file.c:148
+ #, c-format
+ msgid "setting attribute %s for %s"
+ msgstr "ustawianie atrybutu %s dla %s"
