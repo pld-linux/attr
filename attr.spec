@@ -9,6 +9,7 @@ Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{versio
 # Source0-md5:	af9b418a6f542aaab39d132d3c94a730
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-po.patch
+Patch2:		%{name}-lt.patch
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -58,6 +59,7 @@ Biblioteki statyczne do korzystania z rozszerzonych atrybutów.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f aclocal.m4
