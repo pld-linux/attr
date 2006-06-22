@@ -1,12 +1,12 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl):	Narzêdzia do zarz±dzania rozszerzonymi atrybutami systemu plików
 Name:		attr
-Version:	2.4.28
+Version:	2.4.32
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
-Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}-%{version}.src.tar.gz
-# Source0-md5:	4fe11d4221199e51f6eeeee37d5dd84c
+Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}_%{version}-1.tar.gz
+# Source0-md5:	092739e9b944815aecc1f5d8379d5ea5
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-pl.po-update.patch
@@ -60,7 +60,7 @@ Biblioteki statyczne do korzystania z rozszerzonych atrybutów.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
+#%patch2 -p1
 
 %build
 rm -f aclocal.m4
