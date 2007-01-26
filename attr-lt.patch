@@ -5,7 +5,7 @@
  LTVERSION = $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
  
 -LTLINK = $(LIBTOOL) --mode=link $(CC)
-+LTLINK = $(LIBTOOL) --mode=link --tag=CC $(CC)
++LTLINK = $(LIBTOOL) --mode=link --tag=CC $(CCF)
  LTEXEC = $(LIBTOOL) --mode=execute
  LTINSTALL = $(LIBTOOL) --mode=install $(INSTALL)
 -LTCOMPILE = $(LIBTOOL) --mode=compile $(CCF)
