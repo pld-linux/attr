@@ -1,5 +1,5 @@
 Summary:	Utility for managing filesystem extended attributes
-Summary(pl.UTF-8):   Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
+Summary(pl.UTF-8):	Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
 Name:		attr
 Version:	2.4.32
 Release:	3
@@ -32,7 +32,7 @@ atrybutami pod systemem Linux.
 
 %package devel
 Summary:	Header files and libraries to use extended attributes
-Summary(pl.UTF-8):   Pliki nagłówkowe i biblioteki do korzystania z rozszerzonych atrybutów
+Summary(pl.UTF-8):	Pliki nagłówkowe i biblioteki do korzystania z rozszerzonych atrybutów
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -45,7 +45,7 @@ rozszerzonymi atrybutami.
 
 %package static
 Summary:	Static libraries for extended attributes
-Summary(pl.UTF-8):   Biblioteki statyczne do korzystania z rozszerzonych atrybutów
+Summary(pl.UTF-8):	Biblioteki statyczne do korzystania z rozszerzonych atrybutów
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
