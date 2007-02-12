@@ -1,5 +1,5 @@
 Summary:	Utility for managing filesystem extended attributes
-Summary(pl):	Narz阣zia do zarz眃zania rozszerzonymi atrybutami systemu plik體
+Summary(pl.UTF-8):   Narz臋dzia do zarz膮dzania rozszerzonymi atrybutami systemu plik贸w
 Name:		attr
 Version:	2.4.32
 Release:	3
@@ -26,34 +26,34 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 An experimental attr command to manipulate extended attributes under
 Linux.
 
-%description -l pl
-Eksperymentalna wersja polecenia attr to zarz眃zania rozszerzonymi
+%description -l pl.UTF-8
+Eksperymentalna wersja polecenia attr to zarz膮dzania rozszerzonymi
 atrybutami pod systemem Linux.
 
 %package devel
 Summary:	Header files and libraries to use extended attributes
-Summary(pl):	Pliki nag丑wkowe i biblioteki do korzystania z rozszerzonych atrybut體
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe i biblioteki do korzystania z rozszerzonych atrybut贸w
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files to develop software which manipulate extended attributes.
 
-%description devel -l pl
-Pliki nag丑wkowe potrzebne do tworzenia oprogramowania manipuluj眂ego
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe potrzebne do tworzenia oprogramowania manipuluj膮cego
 rozszerzonymi atrybutami.
 
 %package static
 Summary:	Static libraries for extended attributes
-Summary(pl):	Biblioteki statyczne do korzystania z rozszerzonych atrybut體
+Summary(pl.UTF-8):   Biblioteki statyczne do korzystania z rozszerzonych atrybut贸w
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libraries for extended attributes.
 
-%description static -l pl
-Biblioteki statyczne do korzystania z rozszerzonych atrybut體.
+%description static -l pl.UTF-8
+Biblioteki statyczne do korzystania z rozszerzonych atrybut贸w.
 
 %prep
 %setup -q
