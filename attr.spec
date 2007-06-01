@@ -1,12 +1,12 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl.UTF-8):	Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
 Name:		attr
-Version:	2.4.32
-Release:	3
+Version:	2.4.38
+Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}_%{version}-1.tar.gz
-# Source0-md5:	092739e9b944815aecc1f5d8379d5ea5
+# Source0-md5:	92b71f124cf5bd80c97eac3d50ba0c61
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
@@ -61,8 +61,10 @@ Biblioteki statyczne do korzystania z rozszerzonych atrybutów.
 %patch1 -p1
 %patch2 -p1
 
-%build
 rm -f aclocal.m4
+
+%build
+%{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %configure \
@@ -116,16 +118,16 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README doc/CHANGES
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libattr.so.*.*
 %{_mandir}/man[158]/*
 
 %files devel
 %defattr(644,root,root,755)
-%{_libexecdir}/lib*.la
-%attr(755,root,root) %{_libexecdir}/lib*.so
+%attr(755,root,root) %{_libexecdir}/libattr.so
+%{_libexecdir}/libattr.la
 %{_includedir}/attr
 %{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
-%{_libexecdir}/lib*.a
+%{_libexecdir}/libattr.a
