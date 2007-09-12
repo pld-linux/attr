@@ -5,8 +5,8 @@ diff -Nur attr-2.4.32/libattr/Makefile attr-2.4.32.LDFLAGS/libattr/Makefile
  
  TOPDIR = ..
  
--LTLDFLAGS = -Wl,--version-script,$(TOPDIR)/exports
-+LTLDFLAGS = -Wl,--version-script,$(TOPDIR)/exports $(LLDFLAGS)
+-LTLDFLAGS += -Wl,--version-script,$(TOPDIR)/exports
++LTLDFLAGS += -Wl,--version-script,$(TOPDIR)/exports $(LLDFLAGS)
  include $(TOPDIR)/include/builddefs
  
  LTLIBRARY = libattr.la
