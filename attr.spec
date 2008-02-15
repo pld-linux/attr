@@ -1,12 +1,12 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl.UTF-8):	Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
 Name:		attr
-Version:	2.4.39
-Release:	2
+Version:	2.4.41
+Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
 Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}_%{version}-1.tar.gz
-# Source0-md5:	6015feba42b18307de90bb6be9909f7d
+# Source0-md5:	867eb6e8863e39900382d77e2b538696
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
@@ -90,15 +90,15 @@ export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
 %{__make} install-lib \
 	DIST_MANIFEST=$DIST_INSTALL_LIB
 
-rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
-rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
-rm -rf	$RPM_BUILD_ROOT%{_mandir}/man2
-
-ln -sf %{_libdir}/$(cd $RPM_BUILD_ROOT%{_libdir} ; echo libattr.so.*.*.*) \
+ln -sf %{_libdir}/$(basename $RPM_BUILD_ROOT%{_libdir}/libattr.so.*.*.*) \
 	 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
 
 %{__sed} -i "s|libdir='%{_libdir}'|libdir='%{_libexecdir}'|" \
 	$RPM_BUILD_ROOT%{_libexecdir}/libattr.la
+
+rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
+rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
+rm -rf	$RPM_BUILD_ROOT%{_mandir}/man2
 
 echo ".so attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3
 echo ".so attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
@@ -110,6 +110,9 @@ echo ".so attr_set.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_setf.3
 
 rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 
+# already in /usr
+rm -f $RPM_BUILD_ROOT%{_libdir}/libattr.{so,la,a}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -119,16 +122,22 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc README doc/CHANGES
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/libattr.so.*.*
-%{_mandir}/man[158]/*
+%attr(755,root,root) %{_bindir}/attr
+%attr(755,root,root) %{_bindir}/getfattr
+%attr(755,root,root) %{_bindir}/setfattr
+%attr(755,root,root) %{_libdir}/libattr.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libattr.so.1
+%{_mandir}/man1/attr.1*
+%{_mandir}/man1/getfattr.1*
+%{_mandir}/man1/setfattr.1*
+%{_mandir}/man5/attr.5*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libexecdir}/libattr.so
 %{_libexecdir}/libattr.la
 %{_includedir}/attr
-%{_mandir}/man3/*
+%{_mandir}/man3/attr_*.3*
 
 %files static
 %defattr(644,root,root,755)
