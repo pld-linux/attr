@@ -15,6 +15,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.402
 Obsoletes:	libattr
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -96,15 +97,7 @@ ln -sf %{_libdir}/$(basename $RPM_BUILD_ROOT%{_libdir}/libattr.so.*.*.*) \
 %{__sed} -i "s|libdir='%{_libdir}'|libdir='%{_libexecdir}'|" \
 	$RPM_BUILD_ROOT%{_libexecdir}/libattr.la
 
-rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_getf,attr_listf}.3
-rm -f	$RPM_BUILD_ROOT%{_mandir}/man3/{attr_multif,attr_removef,attr_setf}.3
 rm -rf	$RPM_BUILD_ROOT%{_mandir}/man2
-
-echo ".so attr_get.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_getf.3
-echo ".so attr_list.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_listf.3
-echo ".so attr_multi.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_multif.3
-echo ".so attr_remove.3" > $RPM_BUILD_ROOT%{_mandir}/man3/attr_removef.3
-echo ".so attr_set.3"	> $RPM_BUILD_ROOT%{_mandir}/man3/attr_setf.3
 
 %find_lang %{name}
 
