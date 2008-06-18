@@ -5,7 +5,7 @@ Version:	2.4.41
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
-Source0:	ftp://linux-xfs.sgi.com/projects/xfs/download/cmd_tars/%{name}_%{version}-1.tar.gz
+Source0:	ftp://linux-xfs.sgi.com/projects/xfs/cmd_tars/%{name}_%{version}-1.tar.gz
 # Source0-md5:	867eb6e8863e39900382d77e2b538696
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
