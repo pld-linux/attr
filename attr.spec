@@ -1,16 +1,16 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl.UTF-8):	Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
 Name:		attr
-Version:	2.4.43
+Version:	2.4.44
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
-Source0:	ftp://linux-xfs.sgi.com/projects/xfs/cmd_tars/%{name}_%{version}-1.tar.gz
-# Source0-md5:	91583a14bcbd637adaa9b07ea49c5d4b
+Source0:	http://mirror.lihnidos.org/GNU/savannah/attr/%{name}-%{version}.src.tar.gz
+# Source0-md5:	d132c119831c27350e10b9f885711adc
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
-URL:		http://oss.sgi.com/projects/xfs/
+URL:		http://savannah.nongnu.org/projects/attr
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
