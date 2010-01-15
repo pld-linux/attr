@@ -5,12 +5,12 @@ Version:	2.4.44
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
-Source0:	http://mirror.lihnidos.org/GNU/savannah/attr/%{name}-%{version}.src.tar.gz
+Source0:	http://download.savannah.gnu.org/releases-noredirect/attr/%{name}-%{version}.src.tar.gz
 # Source0-md5:	d132c119831c27350e10b9f885711adc
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
-URL:		http://savannah.nongnu.org/projects/attr
+URL:		http://savannah.nongnu.org/projects/attr/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
