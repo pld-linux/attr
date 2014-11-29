@@ -1,12 +1,12 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl.UTF-8):	Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
 Name:		attr
-Version:	2.4.46
+Version:	2.4.47
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
-Source0:	http://download.savannah.gnu.org/releases-noredirect/attr/%{name}-%{version}.src.tar.gz
-# Source0-md5:	db557c17fdfa4f785333ecda08654010
+Source0:	http://git.savannah.gnu.org/cgit/attr.git/snapshot/%{name}-%{version}.tar.gz
+# Source0-md5:	e859cff25b811cc3bfb8a70a415ff706
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
@@ -62,15 +62,14 @@ Biblioteki statyczne do korzystania z rozszerzonych atrybutów.
 %patch1 -p1
 %patch2 -p1
 
-%{__rm} aclocal.m4
+%{__rm} -f aclocal.m4
 
 %build
-mv install-sh install-custom-sh
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 install %{_datadir}/automake/config.* .
-mv install-custom-sh install-sh
+install include/install-sh .
 
 %configure \
 	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
@@ -81,6 +80,8 @@ mv install-custom-sh install-sh
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
+install -d $RPM_BUILD_ROOT%{_libexecdir}
 
 DIST_ROOT=$RPM_BUILD_ROOT
 DIST_INSTALL=`pwd`/install.manifest
@@ -95,8 +96,11 @@ export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
 %{__make} install-lib \
 	DIST_MANIFEST=$DIST_INSTALL_LIB
 
+mv $RPM_BUILD_ROOT%{_libdir}/libattr.{la,a} \
+	$RPM_BUILD_ROOT%{_libexecdir}
+
 ln -sf %{_libdir}/$(basename $RPM_BUILD_ROOT%{_libdir}/libattr.so.*.*.*) \
-	 $RPM_BUILD_ROOT%{_libexecdir}/libattr.so
+	$RPM_BUILD_ROOT%{_libexecdir}/libattr.so
 
 %{__sed} -i "s|libdir='%{_libdir}'|libdir='%{_libexecdir}'|" \
 	$RPM_BUILD_ROOT%{_libexecdir}/libattr.la
@@ -108,7 +112,7 @@ ln -sf %{_libdir}/$(basename $RPM_BUILD_ROOT%{_libdir}/libattr.so.*.*.*) \
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 
 # already in /usr
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libattr.{so,la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libattr.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
