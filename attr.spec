@@ -6,7 +6,7 @@ Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
 Source0:	http://git.savannah.gnu.org/cgit/attr.git/snapshot/%{name}-%{version}.tar.gz
-# Source0-md5:	e859cff25b811cc3bfb8a70a415ff706
+# Source0-md5:	4ee36c16eb7e58a1b38345d4dbbddd88
 Patch0:		%{name}-miscfix.patch
 Patch1:		%{name}-lt.patch
 Patch2:		%{name}-LDFLAGS.patch
