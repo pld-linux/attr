@@ -13,7 +13,7 @@ Patch2:		%{name}-LDFLAGS.patch
 URL:		http://savannah.nongnu.org/projects/attr/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libtool
 BuildRequires:	rpmbuild(macros) >= 1.402
 Obsoletes:	libattr
