@@ -1,27 +1,23 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl.UTF-8):	Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
 Name:		attr
-Version:	2.4.47
-Release:	2
+Version:	2.4.48
+Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
 Source0:	http://git.savannah.gnu.org/cgit/attr.git/snapshot/%{name}-%{version}.tar.gz
-# Source0-md5:	4ee36c16eb7e58a1b38345d4dbbddd88
-Patch0:		%{name}-miscfix.patch
-Patch1:		%{name}-lt.patch
-Patch2:		%{name}-LDFLAGS.patch
+# Source0-md5:	728d7f7f1b6ccbe03efc8d5c76eb5891
 URL:		http://savannah.nongnu.org/projects/attr/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gettext-tools
-BuildRequires:	libtool
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake >= 1:1.11
+BuildRequires:	gettext-tools >= 0.18.2
+BuildRequires:	libtool >= 2:2
 BuildRequires:	rpmbuild(macros) >= 1.402
+BuildRequires:	sed >= 4.0
 Obsoletes:	libattr
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
-%define		_libdir		/%{_lib}
-%define		_libexecdir	/usr/%{_lib}
 
 %description
 An experimental attr command to manipulate extended attributes under
@@ -58,61 +54,41 @@ Biblioteki statyczne do korzystania z rozszerzonych atrybutów.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-
-%{__rm} -f aclocal.m4
 
 %build
+# prepare for gettextize
+%{__sed} -i -e 's,po/Makefile.in,,' configure.ac
+
+po/update-potfiles
+%{__gettextize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
-install %{_datadir}/automake/config.* .
-install include/install-sh .
+%{__autoheader}
+%{__automake}
 
 %configure \
-	DEBUG="%{?debug:-DDEBUG}%{!?debug:-DNDEBUG}" \
-	OPTIMIZER="%{rpmcflags} -DENABLE_GETTEXT"
+	%{?debug:--enable-debug} \
+	--disable-silent-rules
 
-%{__make} \
-	LLDFLAGS="%{rpmldflags}"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-install -d $RPM_BUILD_ROOT%{_libexecdir}
-
-DIST_ROOT=$RPM_BUILD_ROOT
-DIST_INSTALL=`pwd`/install.manifest
-DIST_INSTALL_DEV=`pwd`/install-dev.manifest
-DIST_INSTALL_LIB=`pwd`/install-lib.manifest
-export DIST_ROOT DIST_INSTALL DIST_INSTALL_DEV DIST_INSTALL_LIB
+install -d $RPM_BUILD_ROOT/%{_lib}
 
 %{__make} install \
-	DIST_MANIFEST=$DIST_INSTALL
-%{__make} install-dev \
-	DIST_MANIFEST=$DIST_INSTALL_DEV
-%{__make} install-lib \
-	DIST_MANIFEST=$DIST_INSTALL_LIB
+	DESTDIR=$RPM_BUILD_ROOT
 
-mv $RPM_BUILD_ROOT%{_libdir}/libattr.{la,a} \
-	$RPM_BUILD_ROOT%{_libexecdir}
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libattr.so.* \
+	$RPM_BUILD_ROOT/%{_lib}
 
-ln -sf %{_libdir}/$(basename $RPM_BUILD_ROOT%{_libdir}/libattr.so.*.*.*) \
-	$RPM_BUILD_ROOT%{_libexecdir}/libattr.so
-
-%{__sed} -i "s|libdir='%{_libdir}'|libdir='%{_libexecdir}'|" \
-	$RPM_BUILD_ROOT%{_libexecdir}/libattr.la
-
-%{__rm} -r $RPM_BUILD_ROOT%{_mandir}/man2
-
-%find_lang %{name}
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libattr.so.*.*.*) \
+	$RPM_BUILD_ROOT%{_libdir}/libattr.so
 
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 
-# already in /usr
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libattr.so
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -126,20 +102,21 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/attr
 %attr(755,root,root) %{_bindir}/getfattr
 %attr(755,root,root) %{_bindir}/setfattr
-%attr(755,root,root) %{_libdir}/libattr.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libattr.so.1
+%attr(755,root,root) /%{_lib}/libattr.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libattr.so.1
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/xattr.conf
 %{_mandir}/man1/attr.1*
 %{_mandir}/man1/getfattr.1*
 %{_mandir}/man1/setfattr.1*
-%{_mandir}/man5/attr.5*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libexecdir}/libattr.so
-%{_libexecdir}/libattr.la
+%attr(755,root,root) %{_libdir}/libattr.so
+%{_libdir}/libattr.la
 %{_includedir}/attr
+%{_pkgconfigdir}/libattr.pc
 %{_mandir}/man3/attr_*.3*
 
 %files static
 %defattr(644,root,root,755)
-%{_libexecdir}/libattr.a
+%{_libdir}/libattr.a
