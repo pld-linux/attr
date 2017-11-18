@@ -2,7 +2,7 @@ Summary:	Utility for managing filesystem extended attributes
 Summary(pl.UTF-8):	Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
 Name:		attr
 Version:	2.4.48
-Release:	1
+Release:	1.1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
 Source0:	http://git.savannah.gnu.org/cgit/attr.git/snapshot/%{name}-%{version}.tar.gz
