@@ -1,12 +1,12 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl.UTF-8):	Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
 Name:		attr
-Version:	2.4.48
-Release:	2
+Version:	2.5.1
+Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
-Source0:	http://git.savannah.gnu.org/cgit/attr.git/snapshot/%{name}-%{version}.tar.gz
-# Source0-md5:	728d7f7f1b6ccbe03efc8d5c76eb5891
+Source0:	http://download.savannah.nongnu.org/releases/attr/%{name}-%{version}.tar.xz
+# Source0-md5:	e459262266bbd82b3dd348fc8cc68a6d
 URL:		http://savannah.nongnu.org/projects/attr/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
@@ -14,7 +14,9 @@ BuildRequires:	gettext-tools >= 0.18.2
 BuildRequires:	libtool >= 2:2
 BuildRequires:	rpmbuild(macros) >= 1.402
 BuildRequires:	sed >= 4.0
-Obsoletes:	libattr
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
+Obsoletes:	libattr < 2.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir		/bin
@@ -56,17 +58,12 @@ Biblioteki statyczne do korzystania z rozszerzonych atrybutów.
 %setup -q
 
 %build
-# prepare for gettextize
-%{__sed} -i -e 's,po/Makefile.in,,' configure.ac
-
-po/update-potfiles
 %{__gettextize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-
 %configure \
 	%{?debug:--enable-debug} \
 	--disable-silent-rules
