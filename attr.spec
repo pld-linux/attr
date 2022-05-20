@@ -7,6 +7,7 @@ License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
 Source0:	http://download.savannah.nongnu.org/releases/attr/%{name}-%{version}.tar.xz
 # Source0-md5:	e459262266bbd82b3dd348fc8cc68a6d
+Patch0:		%{name}-pl.po-update.patch
 URL:		http://savannah.nongnu.org/projects/attr/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
@@ -56,6 +57,9 @@ Biblioteki statyczne do korzystania z rozszerzonych atrybutów.
 
 %prep
 %setup -q
+%patch0 -p1
+
+%{__rm} po/stamp-po
 
 %build
 %{__gettextize}
