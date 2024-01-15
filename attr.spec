@@ -5,7 +5,7 @@ Version:	2.5.1
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
-Source0:	http://download.savannah.nongnu.org/releases/attr/%{name}-%{version}.tar.xz
+Source0:	https://download.savannah.nongnu.org/releases/attr/%{name}-%{version}.tar.xz
 # Source0-md5:	e459262266bbd82b3dd348fc8cc68a6d
 Patch0:		%{name}-pl.po-update.patch
 URL:		http://savannah.nongnu.org/projects/attr/
