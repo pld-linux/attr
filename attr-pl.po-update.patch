@@ -1,24 +1,7 @@
 --- attr-2.5.1/po/pl.po.orig	2021-03-16 07:49:18.000000000 +0100
 +++ attr-2.5.1/po/pl.po	2022-05-20 21:54:22.867975473 +0200
-@@ -84,7 +84,7 @@ msgid "       %s %s\n"
- msgstr "       %s %s\n"
- 
- #: tools/setfattr.c:184
--#, fuzzy, c-format
-+#, c-format
- msgid ""
- "  -n, --name=name         set the value of the named extended attribute\n"
- "  -x, --remove=name       remove the named extended attribute\n"
-@@ -100,6 +100,7 @@ msgstr ""
- "  -v, --value=warto¶ci    u¿ycie warto¶ci jako warto¶ci atrybutu\n"
- "  -h, --no-dereference    nie pod±¿anie za dowi±zaniami symbolicznymi\n"
- "      --restore=plik      odtworzenie rozszerzonych atrybutów\n"
-+"      --raw               warto¶æ atrybutu nie jest zakodowania\n"
- "      --version           wy¶wietlenie informacji o wersji i zakoñczenie\n"
- "      --help              ten tekst pomocy\n"
- 
 @@ -125,7 +126,7 @@ msgid "%s %s -- get extended attributes\
- msgstr "%s %s -- odczyt rozszerzonych atrybutów\n"
+ msgstr "SkÅ‚adnia: %s %s\n"
  
  #: tools/getfattr.c:388
 -#, fuzzy, c-format
@@ -26,23 +9,3 @@
  msgid ""
  "  -n, --name=name         get the named extended attribute value\n"
  "  -d, --dump              get all extended attribute values\n"
-@@ -150,6 +151,7 @@ msgstr ""
- "wzorca\n"
- "      --only-values       wypisywanie tylko samych warto¶ci\n"
- "  -h, --no-dereference    nie pod±¿anie za dowi±zaniami symbolicznymi\n"
-+"      --one-file-system   pomijanie plików na innych systemach plików\n"
- "      --absolute-names    nie pomijanie wiod±cych '/' ze ¶cie¿ek\n"
- "  -R, --recursive         rekurencyjne wchodzenie do katalogów\n"
- "  -L, --logical           przechodzenie logiczne, pod±¿anie za dowi±zaniami\n"
-@@ -236,9 +238,9 @@ msgid "Could not remove \"%s\" for %s\n"
- msgstr "Nie mo¿na usun±æ \"%s\" dla %s\n"
- 
- #: tools/attr.c:238
--#, fuzzy, c-format
-+#, c-format
- msgid "Could not list %s\n"
--msgstr "Nie mo¿na wypisaæ listy \"%s\" dla %s\n"
-+msgstr "Nie mo¿na wypisaæ listy %s\n"
- 
- #: tools/attr.c:248
- #, c-format
