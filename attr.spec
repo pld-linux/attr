@@ -57,7 +57,7 @@ Biblioteki statyczne do korzystania z rozszerzonych atrybutów.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %{__rm} po/stamp-po
 
