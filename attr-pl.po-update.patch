@@ -1,9 +1,9 @@
---- attr-2.5.1/po/pl.po.orig	2021-03-16 07:49:18.000000000 +0100
-+++ attr-2.5.1/po/pl.po	2022-05-20 21:54:22.867975473 +0200
-@@ -125,7 +126,7 @@ msgid "%s %s -- get extended attributes\
+--- attr-2.6.0/po/pl.po.orig	2026-07-02 01:29:41.358590173 +0200
++++ attr-2.6.0/po/pl.po	2026-07-02 01:29:41.432408840 +0200
+@@ -146,7 +146,7 @@
  msgstr "Składnia: %s %s\n"
  
- #: tools/getfattr.c:388
+ #: tools/getfattr.c:397
 -#, fuzzy, c-format
 +#, c-format
  msgid ""

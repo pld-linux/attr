@@ -1,12 +1,12 @@
 Summary:	Utility for managing filesystem extended attributes
 Summary(pl.UTF-8):	Narzędzia do zarządzania rozszerzonymi atrybutami systemu plików
 Name:		attr
-Version:	2.5.2
+Version:	2.6.0
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
 Source0:	https://download.savannah.nongnu.org/releases/attr/%{name}-%{version}.tar.xz
-# Source0-md5:	4da9c1d25394946434e5913f49d778b6
+# Source0-md5:	c0516a99377b4938eeb7fb2699247e82
 Patch0:		%{name}-pl.po-update.patch
 URL:		http://savannah.nongnu.org/projects/attr/
 BuildRequires:	autoconf >= 2.50
