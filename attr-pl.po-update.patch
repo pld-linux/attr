@@ -1,6 +1,6 @@
---- attr-2.6.0/po/pl.po.orig	2026-07-02 01:29:41.358590173 +0200
-+++ attr-2.6.0/po/pl.po	2026-07-02 01:29:41.432408840 +0200
-@@ -146,7 +146,7 @@
+--- attr-2.6.0/po/pl.po.orig	2026-06-26 14:32:27.000000000 +0200
++++ attr-2.6.0/po/pl.po	2026-07-02 20:55:31.822613312 +0200
+@@ -146,7 +146,7 @@ msgid "Usage: %s %s\n"
  msgstr "Składnia: %s %s\n"
  
  #: tools/getfattr.c:397
@@ -9,3 +9,71 @@
  msgid ""
  "  -n, --name=name         get the named extended attribute value\n"
  "  -d, --dump              get all extended attribute values\n"
+@@ -214,6 +214,8 @@ msgid ""
+ "Warning: option --restore=file is unsafe without option -P (--physical) as "
+ "it traverses symbolic links in pathnames\n"
+ msgstr ""
++"Uwaga: opcja --restore=plik nie jest bezpieczna bez opcji -P (--physical), jako że "
++"przechodzi dowiązania symboliczne w ścieżkach\n"
+ 
+ #: tools/setfattr.c:162
+ #, c-format
+@@ -221,11 +223,13 @@ msgid ""
+ "Warning: option --restore=file is unsafe without option -h (--no-"
+ "dereference) as it dereferences symbolic link pathnames\n"
+ msgstr ""
++"Uwaga: opcja --restore=plik nie jest bezpieczna bez opcji -h (--no-dereference), "
++"jako że rozwija dowiązania symboliczne w ścieżkach\n"
+ 
+ #: tools/setfattr.c:199
+ #, c-format
+ msgid "%s: lookup of directory %s without following symlinks: %s\n"
+-msgstr ""
++msgstr "%s: wyszukiwanie katalogu %s bez podążania za dowiązaniami symbolicznymi: %s\n"
+ 
+ #: tools/setfattr.c:251
+ #, c-format
+@@ -239,7 +243,7 @@ msgid "       %s %s\n"
+ msgstr "       %s %s\n"
+ 
+ #: tools/setfattr.c:256
+-#, fuzzy, c-format
++#, c-format
+ msgid ""
+ "  -n, --name=name         set the value of the named extended attribute\n"
+ "  -x, --remove=name       remove the named extended attribute\n"
+@@ -251,28 +255,17 @@ msgid ""
+ "      --version           print version and exit\n"
+ "      --help              this help text\n"
+ msgstr ""
+-"  -n, --name=nazwa        ustawienie wartości atrybutu po nazwie\n"
+-"  -x, --remove=nazwa      usunięcie atrybutu po nazwie\n"
+-"  -v, --value=wartości    użycie wartości jako wartości atrybutu\n"
++"  -n, --name=nazwa        ustawienie wartości atrybutu rozszerzonego po nazwie\n"
++"  -x, --remove=nazwa      usunięcie atrybutu rozszerzonego po nazwie\n"
++"  -v, --value=wartość     użycie wartości jako wartości atrybutu\n"
+ "  -h, --no-dereference    niepodążanie za dowiązaniami symbolicznymi\n"
++"  -P, --physical          nieprzechodzenie dowiązań przy odtwarzaniu\n"
+ "      --restore=plik      odtworzenie rozszerzonych atrybutów\n"
+ "      --raw               wartość atrybutu nie jest zakodowania\n"
+ "      --version           wyświetlenie informacji o wersji i zakończenie\n"
+ "      --help              ten tekst pomocy\n"
+ 
+ #: tools/setfattr.c:380
+-#, fuzzy, c-format
+-msgid "Try `%s --help' for more information.\n"
+-msgstr ""
+-"Składnia: %s %s\n"
+-"`%s --help' wyświetli więcej informacji.\n"
+-
+ #, c-format
+-#~ msgid ""
+-#~ "Usage: %s %s\n"
+-#~ "       %s %s\n"
+-#~ "Try `%s --help' for more information.\n"
+-#~ msgstr ""
+-#~ "Składnia: %s %s\n"
+-#~ "          %s %s\n"
+-#~ "`%s --help' wyświetli więcej informacji.\n"
++msgid "Try `%s --help' for more information.\n"
++msgstr "`%s --help' wyświetli więcej informacji.\n"
