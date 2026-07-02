@@ -9,7 +9,7 @@ Source0:	https://download.savannah.nongnu.org/releases/attr/%{name}-%{version}.t
 # Source0-md5:	c0516a99377b4938eeb7fb2699247e82
 Patch0:		%{name}-pl.po-update.patch
 URL:		http://savannah.nongnu.org/projects/attr/
-BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.15
 BuildRequires:	gettext-tools >= 0.18.2
 BuildRequires:	libtool >= 2:2
@@ -81,11 +81,14 @@ install -d $RPM_BUILD_ROOT/%{_lib}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# make library usable without /usr
 %{__mv} $RPM_BUILD_ROOT%{_libdir}/libattr.so.* \
 	$RPM_BUILD_ROOT/%{_lib}
-
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libattr.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libattr.so
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libattr.la
 
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 
@@ -103,8 +106,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/attr
 %attr(755,root,root) %{_bindir}/getfattr
 %attr(755,root,root) %{_bindir}/setfattr
-%attr(755,root,root) /%{_lib}/libattr.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/libattr.so.1
+/%{_lib}/libattr.so.*.*.*
+%ghost /%{_lib}/libattr.so.1
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/xattr.conf
 %{_mandir}/man1/attr.1*
 %{_mandir}/man1/getfattr.1*
@@ -112,8 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libattr.so
-%{_libdir}/libattr.la
+%{_libdir}/libattr.so
 %{_includedir}/attr
 %{_pkgconfigdir}/libattr.pc
 %{_mandir}/man3/attr_*.3*
