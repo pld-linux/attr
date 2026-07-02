@@ -12,7 +12,9 @@ URL:		http://savannah.nongnu.org/projects/attr/
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.15
 BuildRequires:	gettext-tools >= 0.18.2
+BuildRequires:	glibc-headers >= 6:2.32
 BuildRequires:	libtool >= 2:2
+BuildRequires:	linux-libc-headers >= 7:5.6
 BuildRequires:	rpmbuild(macros) >= 1.402
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
