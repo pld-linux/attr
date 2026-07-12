@@ -36,7 +36,7 @@ atrybutami pod systemem Linux.
 Summary:	Header files and libraries to use extended attributes
 Summary(pl.UTF-8):	Pliki nagłówkowe i biblioteki do korzystania z rozszerzonych atrybutów
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description devel
 Header files to develop software which manipulate extended attributes.
@@ -49,7 +49,7 @@ rozszerzonymi atrybutami.
 Summary:	Static libraries for extended attributes
 Summary(pl.UTF-8):	Biblioteki statyczne do korzystania z rozszerzonych atrybutów
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 
 %description static
 Static libraries for extended attributes.
